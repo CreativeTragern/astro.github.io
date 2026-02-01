@@ -1,127 +1,220 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Космос та Планети</title>
-  <style>
-    /* Базові стилі */
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom, #0b0c10, #1f2833);
-      color: #fff;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Астрономія: Планети Сонячної системи</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    header {
-      text-align: center;
-      padding: 50px 20px 20px 20px;
-      font-size: 2.5em;
-      letter-spacing: 2px;
-    }
+  body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(circle at top, #0b0c1a, #000);
+    color: #fff;
+  }
 
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
+  header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #1a1a3d, #0d0d1f);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
 
-    h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
+  header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #ffdd59;
+    text-shadow: 0 0 10px #ffdd59;
+  }
 
-    p {
-      max-width: 700px;
-      margin: 0 auto 50px auto;
-      line-height: 1.6;
-    }
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #111;
+    border-bottom: 2px solid #222;
+  }
 
-    /* Контейнер для планети */
-    .planet-container {
-      perspective: 1000px;
-      margin: 50px auto;
-      width: 250px;
-      height: 250px;
-    }
+  nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+  }
 
-    .planet {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffdd00, #f0a500);
-      transform-style: preserve-3d;
-      animation: rotatePlanet 15s linear infinite;
-      box-shadow: 0 0 30px rgba(255, 200, 0, 0.7);
-    }
+  nav button:hover, nav button.active {
+    background: #222;
+    color: #ffdd59;
+  }
 
-    @keyframes rotatePlanet {
-      from { transform: rotateY(0deg); }
-      to { transform: rotateY(360deg); }
-    }
+  .tab-content {
+    display: none;
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
 
-    /* Адаптація під мобільні */
-    @media (max-width: 768px) {
-      header { font-size: 2em; padding: 30px 10px; }
-      .planet-container { width: 180px; height: 180px; }
-      h2 { font-size: 1.5em; }
-      p { padding: 0 10px; }
-    }
+  .tab-content.active {
+    display: block;
+  }
 
-    /* Ефект паралаксу при скролі */
-    .planet-container.scroll-effect {
-      transform: translateY(calc(var(--scroll) * 0.5px)) rotateY(calc(var(--scroll) * 0.5deg));
-    }
-  </style>
+  .planet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .planet-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 20px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+  }
+
+  .planet-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffdd59;
+  }
+
+  .planet-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  h2 {
+    color: #ffdd59;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    border-top: 2px solid #222;
+    margin-top: 50px;
+  }
+
+</style>
 </head>
 <body>
 
-<header>Космос та Планети</header>
+<header>
+  <h1>Астрономія: Планети Сонячної системи</h1>
+</header>
 
-<section id="mercury">
-  <h2>Меркурій</h2>
-  <div class="planet-container">
-    <div class="planet" style="background: radial-gradient(circle at 30% 30%, #b0b0b0, #7a7a7a);"></div>
-  </div>
-  <p>Меркурій — найменша планета Сонячної системи, найближча до Сонця. Його температура коливається від -173°C до 427°C.</p>
-</section>
+<nav>
+  <button class="tab-btn active" data-tab="sun">Сонце</button>
+  <button class="tab-btn" data-tab="inner">Внутрішні планети</button>
+  <button class="tab-btn" data-tab="outer">Зовнішні планети</button>
+  <button class="tab-btn" data-tab="extras">Екзопланети</button>
+</nav>
 
-<section id="venus">
-  <h2>Венера</h2>
+<div id="sun" class="tab-content active">
+  <h2>Сонце</h2>
   <div class="planet-container">
-    <div class="planet" style="background: radial-gradient(circle at 30% 30%, #f5e1a4, #e09d4f);"></div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Solar_sys8.jpg" alt="Сонце">
+      <h3>Сонце</h3>
+      <p>Сонце — це зірка в центрі нашої Сонячної системи. Його гравітація утримує планети на орбіті. Температура на поверхні близько 5500 °C.</p>
+    </div>
   </div>
-  <p>Венера — друга планета від Сонця. Її атмосфера дуже щільна, складається переважно з вуглекислого газу, що створює парниковий ефект.</p>
-</section>
+</div>
 
-<section id="earth">
-  <h2>Земля</h2>
+<div id="inner" class="tab-content">
+  <h2>Внутрішні планети</h2>
   <div class="planet-container">
-    <div class="planet" style="background: radial-gradient(circle at 30% 30%, #4cafef, #1b5e8f);"></div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mercury_in_true_color.jpg" alt="Меркурій">
+      <h3>Меркурій</h3>
+      <p>Найменша планета Сонячної системи, дуже близько до Сонця, має температуру від -173°C до 427°C.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Venus-real_color.jpg" alt="Венера">
+      <h3>Венера</h3>
+      <p>Венера схожа на Землю за розміром, але її атмосфера дуже щільна та гаряча — середня температура 462°C.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Earth_from_Space.jpg" alt="Земля">
+      <h3>Земля</h3>
+      <p>Наша планета, єдина з відомих життям. Має воду в рідкому стані і щільну атмосферу.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Mars_Valles_Marineris.jpeg" alt="Марс">
+      <h3>Марс</h3>
+      <p>Червона планета з пиловими бурями, гірськими каньйонами і полярними шапками з льоду.</p>
+    </div>
   </div>
-  <p>Земля — третя планета від Сонця, єдина з відомих планет, де існує життя. Близько 71% її поверхні покрито водою.</p>
-</section>
+</div>
 
-<section id="mars">
-  <h2>Марс</h2>
+<div id="outer" class="tab-content">
+  <h2>Зовнішні планети</h2>
   <div class="planet-container">
-    <div class="planet" style="background: radial-gradient(circle at 30% 30%, #ff4f00, #a63b00);"></div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Юпітер">
+      <h3>Юпітер</h3>
+      <p>Найбільша планета Сонячної системи. Має сильні магнітні поля та відомий Великою червоною плямою.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Saturn_during_Equinox.jpg" alt="Сатурн">
+      <h3>Сатурн</h3>
+      <p>Відомий своїми кільцями, які складаються з льоду та каміння.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Уран">
+      <h3>Уран</h3>
+      <p>Гази гігант, обертається на боці, має блакитний колір через метан в атмосфері.</p>
+    </div>
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Нептун">
+      <h3>Нептун</h3>
+      <p>Далека синя планета з сильними вітрами та бурями, швидкістю до 2 100 км/год.</p>
+    </div>
   </div>
-  <p>Марс — четверта планета від Сонця, відома як "червона планета". На його поверхні є найбільший вулкан у Сонячній системі — Олімп Монс.</p>
-</section>
+</div>
+
+<div id="extras" class="tab-content">
+  <h2>Екзопланети</h2>
+  <div class="planet-container">
+    <div class="planet-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Exoplanet_artist_impression.jpg" alt="Екзопланета">
+      <h3>Екзопланети</h3>
+      <p>Планети поза Сонячною системою. Деякі можуть бути схожими на Землю, інші – газові гіганти.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Астрономія. Всі права захищені.</p>
+</footer>
 
 <script>
-  // Простий паралакс-ефект на скролі
-  window.addEventListener('scroll', () => {
-    const planets = document.querySelectorAll('.planet-container');
-    planets.forEach(container => {
-      const rect = container.getBoundingClientRect();
-      if(rect.top < window.innerHeight && rect.bottom > 0){
-        const scroll = window.scrollY;
-        container.style.setProperty('--scroll', scroll);
-        container.classList.add('scroll-effect');
-      }
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
     });
   });
 </script>
