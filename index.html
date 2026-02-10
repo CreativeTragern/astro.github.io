@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Світ рукоділля</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ffb3b3;
+    }
+    section {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧶 Світ рукоділля</h1>
+  <p>Натхнення • Ідеї • Майстер-класи</p>
+</header>
+
+<nav>
+  <a href="#about">Про рукоділля</a>
+  <a href="#types">Види</a>
+  <a href="#ideas">Ідеї</a>
+  <a href="#contact">Контакти</a>
+</nav>
+
+<section id="about">
+  <h2>Про рукоділля</h2>
+  <p>
+    Рукоділля — це мистецтво створення унікальних речей власними руками.
+    Воно допомагає розслабитись, розвиває творчість та може навіть стати джерелом заробітку.
+  </p>
+</section>
+
+<section id="types">
+  <h2>Популярні види рукоділля</h2>
+  <div class="cards">
+    <div class="card">🧵 Вишивка</div>
+    <div class="card">🪡 В'язання</div>
+    <div class="card">✂️ Шиття</div>
+    <div class="card">🕯️ Свічки ручної роботи</div>
+    <div class="card">🎨 Декор та хендмейд</div>
+    <div class="card">📿 Бісероплетіння</div>
+  </div>
+</section>
+
+<section id="ideas">
+  <h2>Ідеї для початківців</h2>
+  <ul>
+    <li>Браслети з бісеру</li>
+    <li>Прості в'язані шарфи</li>
+    <li>Декоративні свічки</li>
+    <li>Листівки ручної роботи</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Контакти</h2>
+  <p>Хочеш співпрацю або власний розділ на сайті? Напиши нам 😉</p>
+</section>
+
+<footer>
+  <p>© 2026 Світ рукоділля | Зроблено з ❤️</p>
+</footer>
+
+</body>
+</html>
